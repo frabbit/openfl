@@ -429,18 +429,21 @@ class Graphics {
 				
 			} else {
 				
+				var bw = Math.ceil (__bounds.width);
+				var bh = Math.ceil (__bounds.height);
 				if (__canvas == null) {
-					
+
 					__canvas = cast Browser.document.createElement ("canvas");
 					__context = __canvas.getContext ("2d");
 					//untyped (__context).mozImageSmoothingEnabled = false;
 					//untyped (__context).webkitImageSmoothingEnabled = false;
 					//__context.imageSmoothingEnabled = false;
-					
+					__canvas.width = bw;
+					__canvas.height = bh;
+				} else {
+					__context.clearRect ( 0 , 0 , bw , bh );
 				}
 				
-				__canvas.width = Math.ceil (__bounds.width);
-				__canvas.height = Math.ceil (__bounds.height);
 				
 				var offsetX = __bounds.x;
 				var offsetY = __bounds.y;
